@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FotoComponent } from 'app/foto/foto.component';
-import { Http, Headers } from "@angular/http";
+import { FotoService } from 'app/servicos/foto.service';
 
 @Component({
   selector: 'cadastro',
@@ -10,26 +10,17 @@ import { Http, Headers } from "@angular/http";
 export class CadastroComponent {
 
   foto = new FotoComponent();
-  caelumPicAPI:Http;
 
-  constructor(http:Http){
-    this.caelumPicAPI = http;
-  }
+  constructor(private servico:FotoService){}
 
   salvar(submit:Event){
     console.log(this.foto);
     submit.preventDefault();
 
-    let cabecalho = new Headers()
-    cabecalho.append('Content-Type','application/json')
-
-    this.caelumPicAPI.post(
-      'http://localhost:3000/v1/fotos'
-      ,JSON.stringify(this.foto)
-      ,{headers: cabecalho}  
-    ).subscribe(
-      resposta => console.log(resposta)
-      , erro => console.log(erro)
+    this.servico.cadastrar(this.foto)
+                .subscribe(
+                  resposta => console.log(resposta)
+                  , erro => console.log(erro)
     )
   }
 }
