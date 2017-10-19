@@ -10,6 +10,10 @@
 
     <painel *ngFor="let foto of fotos" titulo="{{foto.titulo}}" class="col-md-2">
       <foto titulo="{{foto.titulo}}" url="{{foto.url}}"></foto>
+
+      <button class="btn btn-danger" (click)="remover(foto)">
+        Remover
+      </button>
     </painel> 
   
 </article>
