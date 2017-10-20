@@ -10,7 +10,7 @@ import { FotoComponent } from 'app/foto/foto.component';
 
 export class ListagemComponent {
   title:String='CaelumPic'
-  fotos:FotoComponent[]
+  fotos:FotoComponent[]=[]
   mensagem:string
   
     constructor(private servico:FotoService){

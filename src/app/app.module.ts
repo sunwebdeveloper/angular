@@ -2,22 +2,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { PainelModule } from './painel/painel.module';
+import { FotoModule } from './foto/foto.module';
 
 import { AppComponent } from './app.component';
-import { FotoModule } from './foto/foto.module';
-import { PainelModule } from './painel/painel.module';
 import { ListagemComponent } from './listagem/listagem.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 
 import { FotoService } from './servicos/foto.service';
 
 import { roteamento } from "./app.routes";
+import { FiltroPorTitulo } from './foto/titulo.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListagemComponent,
-    CadastroComponent
+    CadastroComponent,
+    FiltroPorTitulo
   ],
   imports: [
     BrowserModule,
@@ -30,4 +32,4 @@ import { roteamento } from "./app.routes";
   providers: [FotoService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
