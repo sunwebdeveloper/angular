@@ -15,9 +15,9 @@ export class ListagemComponent {
   
     constructor(private servico:FotoService){
       servico.listar()
-          .subscribe(resposta => this.fotos=resposta.json()
-                    ,erro => console.log(erro) 
-          )
+             .subscribe(resposta => this.fotos=resposta.json()
+                       ,erro => console.log(erro) 
+             )
     }
 
     remover(foto:FotoComponent){

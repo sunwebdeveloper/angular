@@ -7,6 +7,8 @@
   <div class="row" (submit)="salvar($event)">
     <form  class="col-sm-6">
 
+      <p *ngIf="mensagem" class="alert alert-success">{{mensagem}}</p> 
+
       <div class="form-group">
         <label for="titulo">Titulo</label>
         <input id="titulo" type="text" [(ngModel)]="foto.titulo" name="titulo"
