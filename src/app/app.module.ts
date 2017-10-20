@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PainelModule } from './painel/painel.module';
 import { FotoModule } from './foto/foto.module';
 
@@ -27,6 +27,7 @@ import { FiltroPorTitulo } from './foto/titulo.pipe';
     PainelModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     roteamento
   ],
   providers: [FotoService],

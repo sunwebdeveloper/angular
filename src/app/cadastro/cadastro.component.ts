@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FotoComponent } from 'app/foto/foto.component';
 import { FotoService } from 'app/servicos/foto.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'; 
 
 @Component({
   selector: 'cadastro',
@@ -10,12 +11,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CadastroComponent {
 
-  foto = new FotoComponent();
+  foto = new FotoComponent()
   mensagem:String
+  formCadastro:FormGroup
 
   constructor(private servico:FotoService
              ,private rota:ActivatedRoute
-             ,private roteador:Router){
+             ,private roteador:Router
+             ,private formBuilder:FormBuilder){
+    
+    this.formCadastro = formBuilder.group({
+      titulo:['',Validators.required]
+      ,url:['', Validators.required]
+      ,descricao:''})   
     rota.params.subscribe(
        parametros => parametros.id && servico.obter(parametros.id)
                                                 .subscribe(
