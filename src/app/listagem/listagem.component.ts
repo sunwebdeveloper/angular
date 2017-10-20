@@ -21,5 +21,9 @@ export class ListagemComponent {
 
     remover(foto:FotoComponent){
       this.servico.deletar(foto)
+                  .subscribe(
+                    resposta => console.log(`A foto ${foto.titulo} foi deletada com sucesso.`)
+                    , erro => console.log(`Erro ao deletar a foto ${foto._id}`)
+                  )
     }
 }
