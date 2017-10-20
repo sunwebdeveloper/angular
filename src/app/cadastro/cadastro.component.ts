@@ -19,7 +19,10 @@ export class CadastroComponent {
 
     this.servico.cadastrar(this.foto)
                 .subscribe(
-                  resposta => console.log(resposta)
+                  () => {
+                    alert(`Foto ${this.foto.titulo} adicionada com sucesso.`)
+                    this.foto = new FotoComponent();
+                  }
                   , erro => console.log(erro)
     )
   }

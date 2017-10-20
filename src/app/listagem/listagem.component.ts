@@ -10,7 +10,8 @@ import { FotoComponent } from 'app/foto/foto.component';
 
 export class ListagemComponent {
   title:String='CaelumPic'
-  fotos:Object[]
+  fotos:FotoComponent[]
+  mensagem:string
   
     constructor(private servico:FotoService){
       servico.listar()
@@ -22,7 +23,12 @@ export class ListagemComponent {
     remover(foto:FotoComponent){
       this.servico.deletar(foto)
                   .subscribe(
-                    resposta => console.log(`A foto ${foto.titulo} foi deletada com sucesso.`)
+                    () => {
+                       this.fotos = this.fotos.filter(imagem => imagem._id != foto._id)
+                       this.mensagem=`Foto ${foto.titulo} deletada com sucesso.` 
+
+                       setTimeout(() => this.mensagem = '',4000)
+                    }
                     , erro => console.log(`Erro ao deletar a foto ${foto._id}`)
                   )
     }

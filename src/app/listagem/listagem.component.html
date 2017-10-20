@@ -4,6 +4,8 @@
 
 <article class="container">
   
+    <p *ngIf="mensagem" class="alert alert-success">{{mensagem}}</p> 
+
     <div class="row">
       <a [routerLink]="['/cadastro']" class="btn btn-primary">Nova Foto</a>
     </div>
