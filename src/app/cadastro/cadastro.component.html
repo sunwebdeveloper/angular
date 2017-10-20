@@ -13,9 +13,16 @@
         <label for="titulo">Titulo</label>
         <input formControlName="titulo" id="titulo" type="text" [(ngModel)]="foto.titulo" name="titulo"
                value="{{foto.titulo}}" class="form-control">
-        <div class="alert alert-warning" *ngIf="formCadastro.controls.titulo.invalid">
-          Titulo deve ser digitado
+        
+        <div *ngIf="formCadastro.controls.titulo.errors">       
+          <div class="alert alert-warning" *ngIf="formCadastro.controls.titulo.errors.required">
+            Titulo deve ser digitado
+          </div>
+          <div class="alert alert-warning" *ngIf="formCadastro.controls.titulo.errors.minlength">
+            Titulo deve ter pelo menos 3 caracteres
+          </div>
         </div>
+
       </div>
       
       <div class="form-group">
@@ -38,7 +45,7 @@
       <button [disabled]="formCadastro.invalid" type="submit" class="btn btn-primary">Salvar</button>
     </form>
     <aside class="col-sm-4">
-      <painel titulo="{{foto.titulo}}">
+      <painel titulo="{{foto.titulo}}" *ngIf="foto.titulo">
         <foto titulo="{{foto.titulo}}" url="{{foto.url}}"></foto>
       </painel>
     </aside>

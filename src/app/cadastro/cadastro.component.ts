@@ -21,7 +21,12 @@ export class CadastroComponent {
              ,private formBuilder:FormBuilder){
     
     this.formCadastro = formBuilder.group({
-      titulo:['',Validators.required]
+      titulo:['',Validators.compose(
+        [
+          Validators.required
+         ,Validators.minLength(3)
+        ])
+      ]
       ,url:['', Validators.required]
       ,descricao:''})   
     rota.params.subscribe(
